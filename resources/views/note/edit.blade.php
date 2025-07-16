@@ -1,16 +1,21 @@
-<x-layout>
-    <div class="container">
+<x-app-layout>
+
+
+    <div class="edit-container">
         <h1>Edit Note</h1>
+
         <form action="{{ route('note.update', $note) }}" method="POST">
             @csrf
             @method('PUT')
-            <div class="form-group
-                <label for=" note">Note</label>
-                <textarea name="note" id="note" class="form-control">{{ old('note', $note->note) }}</textarea>
+            <div class="form-group">
+                <label for="note">Note</label>
+                <textarea name="note" id="note">{{ old('note', $note->note) }}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Update Note</button>
+
+            <div class="form-actions">
+                <button type="submit">Update Note</button>
+                <a href="{{ route('note.index') }}">Back to Notes</a>
+            </div>
         </form>
-        <a href="{{ route('note.index') }}" class="btn btn-secondary">Back to
-            Notes</a>
     </div>
-</x-layout>
+</x-app-layout>
